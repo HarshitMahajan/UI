@@ -3,9 +3,12 @@
 import { execSync } from "node:child_process";
 import { cpSync, rmSync, readdirSync, readFileSync, statSync } from "node:fs";
 import { join } from "node:path";
+import { createRequire } from "node:module";
 
 rmSync("dist", { recursive: true, force: true });
-execSync("npx tsc -p tsconfig.build.json", { stdio: "inherit" });
+// Resolve tsc from node_modules directly (npx fails on some Windows + bun setups).
+const tsc = createRequire(import.meta.url).resolve("typescript/bin/tsc");
+execSync(`"${process.execPath}" "${tsc}" -p tsconfig.build.json`, { stdio: "inherit" });
 cpSync("src/styles", "dist/styles", { recursive: true });
 
 // Sanity check: every source file that starts with "use client" must still do so in dist.
