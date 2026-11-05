@@ -1,0 +1,11 @@
+{
+  "name": "1126labs-ui-monorepo",
+  "private": true,
+  "workspaces": ["packages/*", "apps/*"],
+  "scripts": {
+    "build": "bun run --filter @1126labs/ui build",
+    "typecheck": "bun run --filter '*' typecheck",
+    "dev": "bun run --filter playground dev",
+    "check:styles": "node packages/ui/scripts/check-styles.mjs"
+  }
+}

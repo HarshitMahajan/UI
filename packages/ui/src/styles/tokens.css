@@ -1,0 +1,84 @@
+/* LAYER 1 (primitives) and LAYER 3 (component, density, layout tokens). */
+/* ---------------------------------------------------------------------------
+ * 1. PRIMITIVES  (never used directly in components)
+ * ------------------------------------------------------------------------- */
+:root {
+  /* warm neutral scale (the "paper and ink" feel) */
+  --p-white: #ffffff;
+  --p-stone-50: #faf9f6;
+  --p-stone-75: #f7f5f0;
+  --p-stone-100: #f3f1ec;
+  --p-stone-200: #e6e2d9;
+  --p-stone-300: #d3cec2;
+  --p-stone-500: #837d70;
+  --p-stone-600: #635e53;
+  --p-stone-700: #4a463e;
+  --p-stone-800: #2f2c26;
+  --p-stone-900: #1f1d19;
+
+  /* ink, used as translucent overlays so they work on any surface */
+  --p-ink-5: rgb(31 29 25 / 0.05);
+  --p-ink-8: rgb(31 29 25 / 0.08);
+  --p-ink-10: rgb(31 29 25 / 0.1);
+  --p-ink-16: rgb(31 29 25 / 0.16);
+  --p-ink-40: rgb(31 29 25 / 0.4);
+
+  /* accent: muted olive */
+  --p-olive-50: #f2f4e4;
+  --p-olive-100: #e6ebc9;
+  --p-olive-500: #7a8a24;
+  --p-olive-600: #657319;
+  --p-olive-700: #4f5a14;
+
+  /* status hues */
+  --p-red-50: #fbedea;
+  --p-red-600: #b8402b;
+  --p-red-700: #8e2c1d;
+  --p-amber-50: #fbf3df;
+  --p-amber-700: #8a5d09;
+  --p-green-50: #eaf3e6;
+  --p-green-600: #3c7a33;
+  --p-green-700: #2e5f27;
+  --p-blue-50: #eaf0f8;
+  --p-blue-600: #2f5f9e;
+}
+
+/* ---------------------------------------------------------------------------
+ * 3. COMPONENT TOKENS  (density + layout; plain variables, not utilities)
+ * ------------------------------------------------------------------------- */
+:root {
+  /* comfortable density (default) */
+  --control-h-sm: 28px;
+  --control-h-md: 36px;
+  --control-h-lg: 44px;
+  --row-h: 48px; /* table row height */
+  --card-p: 20px; /* card padding */
+  --section-gap: 28px; /* vertical gap between page sections */
+  --field-gap: 6px; /* label to input gap */
+
+  /* layout */
+  --sidebar-w: 264px;
+  --sidebar-w-collapsed: 56px;
+  --topbar-h: 52px;
+  --page-px: 32px;
+  --content-max: 1120px; /* default page width */
+  --content-max-wide: 1440px; /* wide pages: tables, boards */
+
+  /* motion durations */
+  --dur-fast: 120ms; /* hover, color changes */
+  --dur-base: 180ms; /* popups, tabs, toggles */
+  --dur-slow: 280ms; /* panels, sidebar */
+}
+
+/* compact density: set <html data-density="compact"> for ERP-heavy screens */
+[data-density="compact"] {
+  --control-h-sm: 24px;
+  --control-h-md: 30px;
+  --control-h-lg: 36px;
+  --row-h: 34px;
+  --card-p: 14px;
+  --section-gap: 18px;
+  --field-gap: 4px;
+  --page-px: 24px;
+}
+

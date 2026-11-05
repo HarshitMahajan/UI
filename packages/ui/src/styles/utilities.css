@@ -1,0 +1,61 @@
+/* Shared utilities used by components. */
+/* ---------------------------------------------------------------------------
+ * SHARED UTILITIES  (the vocabulary components are built from)
+ * ------------------------------------------------------------------------- */
+@utility motion-fast {
+  transition-duration: var(--dur-fast);
+  transition-timing-function: var(--ease-standard);
+}
+
+@utility motion-base {
+  transition-duration: var(--dur-base);
+  transition-timing-function: var(--ease-standard);
+}
+
+@utility motion-slow {
+  transition-duration: var(--dur-slow);
+  transition-timing-function: var(--ease-standard);
+}
+
+/* page title: serif, like "Coming up" in Granola */
+@utility type-display {
+  font-family: var(--font-display);
+  font-size: var(--text-display);
+  line-height: var(--text-display--line-height);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+/* small section label ("Spaces", table headers) */
+@utility type-label {
+  font-size: var(--text-xs);
+  line-height: var(--text-xs--line-height);
+  font-weight: 500;
+  color: var(--color-fg-muted);
+}
+
+/* enter/exit animation for Base UI popups (menus, tooltips, dialogs) */
+@utility anim-popup {
+  transition-property: opacity, scale;
+  transition-duration: var(--dur-fast);
+  transition-timing-function: var(--ease-standard);
+  transform-origin: var(--transform-origin, center);
+
+  &[data-starting-style],
+  &[data-ending-style] {
+    opacity: 0;
+    scale: 0.97;
+  }
+}
+
+/* enter/exit animation for dialog backdrops */
+@utility anim-fade {
+  transition-property: opacity;
+  transition-duration: var(--dur-base);
+  transition-timing-function: var(--ease-standard);
+
+  &[data-starting-style],
+  &[data-ending-style] {
+    opacity: 0;
+  }
+}

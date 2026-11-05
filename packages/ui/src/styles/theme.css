@@ -1,0 +1,115 @@
+/* LAYER 2: semantic tokens. These become Tailwind utilities. */
+/* ---------------------------------------------------------------------------
+ * 2. SEMANTIC TOKENS  ->  these become Tailwind utilities
+ *    (bg-canvas, text-fg-muted, border-border, rounded-card, shadow-md ...)
+ * ------------------------------------------------------------------------- */
+@theme static {
+  /* wipe Tailwind defaults so only our tokens can be used */
+  --color-*: initial;
+  --radius-*: initial;
+  --shadow-*: initial;
+  --font-*: initial;
+  --text-*: initial;
+
+  --color-transparent: transparent;
+  --color-current: currentColor;
+
+  /* surfaces */
+  --color-canvas: var(--p-stone-50); /* the page background */
+  --color-sidebar: var(--p-stone-100); /* sidebar, one step darker than canvas */
+  --color-surface: var(--p-white); /* cards, inputs, popovers */
+  --color-surface-raised: var(--p-white); /* dialogs, menus */
+  --color-sunken: var(--p-stone-75); /* table headers, disabled fields */
+  --color-overlay: var(--p-ink-40); /* dialog backdrop */
+
+  /* interaction fills */
+  --color-hover: var(--p-ink-5);
+  --color-pressed: var(--p-ink-8);
+  --color-selected: var(--p-ink-8); /* active nav item, selected row */
+
+  /* lines */
+  --color-border: var(--p-ink-10); /* hairlines: cards, dividers */
+  --color-border-strong: var(--p-ink-16); /* controls: inputs, secondary buttons */
+
+  /* text */
+  --color-fg: var(--p-stone-900);
+  --color-fg-muted: var(--p-stone-600);
+  --color-fg-subtle: var(--p-stone-500); /* placeholders, disabled */
+
+  /* primary action = ink, like Granola's pills */
+  --color-primary: var(--p-stone-900);
+  --color-primary-hover: var(--p-stone-700);
+  --color-primary-fg: var(--p-stone-50);
+
+  /* accent = the single brand color (focus, links, selected states) */
+  --color-accent: var(--p-olive-600);
+  --color-accent-hover: var(--p-olive-700);
+  --color-accent-soft: var(--p-olive-50);
+  --color-accent-soft-fg: var(--p-olive-700);
+  --color-ring: var(--p-olive-500);
+
+  /* status: solid / text-on-solid / soft background / text-on-soft */
+  --color-danger: var(--p-red-600);
+  --color-danger-hover: var(--p-red-700);
+  --color-danger-fg: var(--p-white);
+  --color-danger-soft: var(--p-red-50);
+  --color-danger-soft-fg: var(--p-red-700);
+
+  --color-success: var(--p-green-600);
+  --color-success-fg: var(--p-white);
+  --color-success-soft: var(--p-green-50);
+  --color-success-soft-fg: var(--p-green-700);
+
+  --color-warning: var(--p-amber-700);
+  --color-warning-fg: var(--p-white);
+  --color-warning-soft: var(--p-amber-50);
+  --color-warning-soft-fg: var(--p-amber-700);
+
+  --color-info: var(--p-blue-600);
+  --color-info-fg: var(--p-white);
+  --color-info-soft: var(--p-blue-50);
+  --color-info-soft-fg: var(--p-blue-600);
+
+  /* radii: change --radius-button to 8px and every button becomes squarer */
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-full: 9999px;
+  --radius-control: var(--radius-md); /* inputs, selects, nav items */
+  --radius-button: var(--radius-full); /* buttons are pills */
+  --radius-badge: var(--radius-full);
+  --radius-card: var(--radius-xl); /* cards, tables, panels */
+  --radius-popover: var(--radius-lg); /* menus, tooltips, dialogs */
+
+  /* elevation: soft and warm, never heavy */
+  --shadow-xs: 0 1px 0 rgb(31 29 25 / 0.04);
+  --shadow-sm: 0 1px 2px rgb(31 29 25 / 0.06);
+  --shadow-md: 0 8px 24px -6px rgb(31 29 25 / 0.14), 0 2px 6px rgb(31 29 25 / 0.06);
+  --shadow-lg: 0 28px 64px -16px rgb(31 29 25 / 0.26), 0 4px 14px rgb(31 29 25 / 0.08);
+
+  /* type: serif for page titles, sans for everything else */
+  --font-sans: "Inter Variable", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display: "Newsreader Variable", ui-serif, Georgia, "Times New Roman", serif;
+  --font-mono: ui-monospace, "SF Mono", "Cascadia Mono", Menlo, Consolas, monospace;
+
+  --text-xs: 0.75rem; /* 12px  captions, badges */
+  --text-xs--line-height: 1rem;
+  --text-sm: 0.8125rem; /* 13px  secondary text, table cells in compact */
+  --text-sm--line-height: 1.25rem;
+  --text-base: 0.875rem; /* 14px  default UI text */
+  --text-base--line-height: 1.375rem;
+  --text-lg: 1rem; /* 16px  card titles, dialog titles */
+  --text-lg--line-height: 1.5rem;
+  --text-xl: 1.25rem; /* 20px  section headings */
+  --text-xl--line-height: 1.75rem;
+  --text-2xl: 1.75rem; /* 28px  big numbers (stat cards) */
+  --text-2xl--line-height: 2.25rem;
+  --text-display: 1.875rem; /* 30px  page titles (serif) */
+  --text-display--line-height: 2.375rem;
+
+  /* motion */
+  --ease-standard: cubic-bezier(0.2, 0, 0, 1);
+}
+
