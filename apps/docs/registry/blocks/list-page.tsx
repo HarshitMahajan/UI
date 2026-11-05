@@ -14,7 +14,7 @@ import {
   TableHead,
   TableHeaderCell,
   TableRow,
-} from "@1126labs/ui";
+} from "@harshitmahajan/ui";
 
 const statuses = [
   { value: "all", label: "All statuses" },

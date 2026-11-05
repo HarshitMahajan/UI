@@ -3,12 +3,12 @@ description: 1126 Labs design system rules. Apply to every UI change.
 alwaysApply: true
 ---
 
-# UI rules (@1126labs/ui)
+# UI rules (@harshitmahajan/ui)
 
-All UI is built from `@1126labs/ui`. Do not hand-style anything the library already provides.
+All UI is built from `@harshitmahajan/ui`. Do not hand-style anything the library already provides.
 
 ## Hard rules
-1. Import components only from `@1126labs/ui`. Never import `@base-ui/react/*` directly in app code.
+1. Import components only from `@harshitmahajan/ui`. Never import `@base-ui/react/*` directly in app code.
 2. Use only token classes: `bg-canvas|surface|sunken|sidebar`, `text-fg|fg-muted|fg-subtle`, `border-border`, `rounded-control|button|card|popover`, `shadow-xs|sm|md|lg`, status tokens (`bg-danger-soft text-danger-soft-fg`, ...).
 3. Never write hex/rgb colors, default Tailwind palette classes (`bg-red-500`, `text-white`), arbitrary values (`w-[317px]`, `text-[13px]`) or inline `style`. Run `bun run check:styles` before finishing.
 4. Use spacing-scale classes (`gap-4`, `p-6`) for layout only. Never restyle a library component with `className` (margin, width and flex placement are fine; colors, radius, font and shadow are not).

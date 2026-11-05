@@ -1,0 +1,28 @@
+# Publishes packages/ui to GitHub Packages when you push a tag like v0.1.0.
+# Before tagging, set "version" in packages/ui/package.json to match.
+name: Release
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          registry-url: https://npm.pkg.github.com
+          scope: "@harshitmahajan"
+      - run: bun install
+      - run: bun run build
+      - run: npm publish
+        working-directory: packages/ui
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

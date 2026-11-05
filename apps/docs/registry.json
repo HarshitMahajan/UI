@@ -8,7 +8,7 @@
       "type": "registry:block",
       "title": "List page",
       "description": "Title and primary action, filter row, table and empty state.",
-      "dependencies": ["@1126labs/ui", "lucide-react"],
+      "dependencies": ["@harshitmahajan/ui", "lucide-react"],
       "files": [{ "path": "registry/blocks/list-page.tsx", "type": "registry:component" }]
     },
     {
@@ -16,7 +16,7 @@
       "type": "registry:block",
       "title": "Detail page",
       "description": "Breadcrumb, status header, tabs, details and summary cards.",
-      "dependencies": ["@1126labs/ui"],
+      "dependencies": ["@harshitmahajan/ui"],
       "files": [{ "path": "registry/blocks/detail-page.tsx", "type": "registry:component" }]
     },
     {
@@ -24,7 +24,7 @@
       "type": "registry:block",
       "title": "Form page",
       "description": "Sectioned form in cards with a two-column grid and footer actions.",
-      "dependencies": ["@1126labs/ui"],
+      "dependencies": ["@harshitmahajan/ui"],
       "files": [{ "path": "registry/blocks/form-page.tsx", "type": "registry:component" }]
     }
   ]

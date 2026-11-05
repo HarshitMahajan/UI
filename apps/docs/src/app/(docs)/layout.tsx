@@ -1,4 +1,4 @@
-import { AppShell } from "@1126labs/ui";
+import { AppShell } from "@harshitmahajan/ui";
 import { DocsSidebar } from "@/components/docs-sidebar";
 import { blocks } from "@/blocks";
 import { demos } from "@/demos";

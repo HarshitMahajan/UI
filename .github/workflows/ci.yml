@@ -1,0 +1,23 @@
+name: CI
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+      - run: bun install
+      - name: Build library
+        run: bun run build
+      - name: Typecheck
+        run: bun run typecheck
+      - name: Style rules (no raw colors, no arbitrary sizes)
+        run: bun run check:styles
+      - name: Build docs and registry
+        run: bun run --filter docs build
+      - name: Build playground
+        run: bun run --filter playground build

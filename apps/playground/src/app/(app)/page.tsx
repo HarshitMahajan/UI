@@ -17,7 +17,7 @@ import {
   TableHead,
   TableHeaderCell,
   TableRow,
-} from "@1126labs/ui";
+} from "@harshitmahajan/ui";
 
 const orders = [
   { id: "SO-1042", customer: "Aarav Textiles", total: "₹1,24,500", status: "Paid", tone: "success" },

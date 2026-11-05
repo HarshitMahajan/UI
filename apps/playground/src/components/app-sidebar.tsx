@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Boxes, FileText, House, Palette, Users } from "lucide-react";
-import { SidebarItem, SidebarSection } from "@1126labs/ui";
+import { SidebarItem, SidebarSection } from "@harshitmahajan/ui";
 
 const isActive = (pathname: string, href: string) =>
   href === "/" ? pathname === "/" : pathname === href || pathname.startsWith(`${href}/`);

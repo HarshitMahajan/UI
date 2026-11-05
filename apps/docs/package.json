@@ -8,10 +8,10 @@
     "registry:build": "shadcn build",
     "prebuild": "node scripts/gen-sources.mjs && shadcn build",
     "build": "next build",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "node scripts/gen-sources.mjs && tsc --noEmit"
   },
   "dependencies": {
-    "@1126labs/ui": "workspace:*",
+    "@harshitmahajan/ui": "workspace:*",
     "@fontsource-variable/inter": "^5.2.0",
     "@fontsource-variable/newsreader": "^5.2.0",
     "lucide-react": "^1.69.0",

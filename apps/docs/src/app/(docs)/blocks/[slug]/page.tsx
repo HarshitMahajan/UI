@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { Card, Page, PageHeader, Section, Tabs, TabsList, TabsPanel, TabsTab } from "@1126labs/ui";
+import { Card, Page, PageHeader, Section, Tabs, TabsList, TabsPanel, TabsTab } from "@harshitmahajan/ui";
 import { CodeBlock } from "@/components/code-block";
 import { blocks } from "@/blocks";
 import sources from "@/generated/sources.json";
@@ -33,7 +33,7 @@ export default async function BlockPage({ params }: { params: Promise<{ slug: st
           <Section>
             <CodeBlock label="Terminal" code={`npx shadcn@latest add @1126/${slug}`} />
             <p className="mt-3 text-sm text-fg-muted">
-              The file lands in your app&apos;s components folder. It imports from @1126labs/ui, so install the
+              The file lands in your app&apos;s components folder. It imports from @harshitmahajan/ui, so install the
               package first. Edit it freely, but keep using library components and token classes.
             </p>
           </Section>

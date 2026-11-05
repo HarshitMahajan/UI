@@ -1,5 +1,5 @@
 {
-  "name": "@1126labs/ui",
+  "name": "@harshitmahajan/ui",
   "version": "0.1.0",
   "description": "1126 Labs internal design system: Base UI components with a single token file.",
   "type": "module",
@@ -63,5 +63,14 @@
     "@fontsource-variable/newsreader": {
       "optional": true
     }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HarshitMahajan/UI.git",
+    "directory": "packages/ui"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com",
+    "access": "restricted"
   }
 }

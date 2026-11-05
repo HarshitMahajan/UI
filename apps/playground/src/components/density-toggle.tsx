@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { Tabs, TabsList, TabsTab } from "@1126labs/ui";
+import { Tabs, TabsList, TabsTab } from "@harshitmahajan/ui";
 
 /** Switches the whole app between comfortable and compact density. */
 export function DensityToggle() {

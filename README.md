@@ -1,6 +1,6 @@
 # 1126 Labs UI
 
-Internal design system: Base UI components + one token file. Package: `@1126labs/ui` (not yet published).
+Internal design system: Base UI components + one token file. Package: `@harshitmahajan/ui` (not yet published).
 
 ## Layout
 - `packages/ui`: the library (`src/styles/*.css` = all design decisions, `src/components/*` = components, `rules/` = Cursor rules for consuming apps)
@@ -22,8 +22,8 @@ bun run check:styles  # fails on hex colors, default palette classes, arbitrary 
 ```css
 /* app/globals.css */
 @import "tailwindcss";
-@import "@1126labs/ui/styles.css";
-@source "../node_modules/@1126labs/ui/dist";   /* path relative to this file */
+@import "@harshitmahajan/ui/styles.css";
+@source "../node_modules/@harshitmahajan/ui/dist";   /* path relative to this file */
 ```
 Optional fonts (Inter + Newsreader): install `@fontsource-variable/inter` and `@fontsource-variable/newsreader`, then import them in the root layout.
 
@@ -33,7 +33,7 @@ Re-theme by overriding tokens after the import (colors, radii, density), never b
 Done: tokens, build, ~25 components, playground. Next: Storybook, tests, charts, DataTable, date picker, publishing (needs the `1126labs` GitHub org). See PLAN.md.
 
 ## Two ways things reach an app
-1. **Package** (`bun add @1126labs/ui`): tokens and all core components. Upgrading updates every app.
+1. **Package** (`bun add @harshitmahajan/ui`): tokens and all core components. Upgrading updates every app.
 2. **Registry** (`npx shadcn@latest add @1126/list-page`): page blocks copied into the app and then editable (still bound by the style rules). Add to the app's `components.json`:
 ```json
 "registries": { "@1126": { "url": "https://<docs-domain>/r/{name}.json", "headers": { "Authorization": "Bearer ${REGISTRY_TOKEN}" } } }

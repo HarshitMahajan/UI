@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { SidebarItem, SidebarSection } from "@1126labs/ui";
+import { SidebarItem, SidebarSection } from "@harshitmahajan/ui";
 
 const isActive = (pathname: string, href: string) =>
   href === "/" ? pathname === "/" : pathname === href || pathname.startsWith(`${href}/`);

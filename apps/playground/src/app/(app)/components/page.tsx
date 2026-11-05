@@ -48,7 +48,7 @@ import {
   TabsTab,
   Textarea,
   Tooltip,
-} from "@1126labs/ui";
+} from "@harshitmahajan/ui";
 
 const statuses = [
   { value: "draft", label: "Draft" },

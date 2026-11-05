@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { Card, CardBody, Page, PageHeader, Section, Tabs, TabsList, TabsPanel, TabsTab } from "@1126labs/ui";
+import { Card, CardBody, Page, PageHeader, Section, Tabs, TabsList, TabsPanel, TabsTab } from "@harshitmahajan/ui";
 import { CodeBlock } from "@/components/code-block";
 import { demos } from "@/demos";
 import sources from "@/generated/sources.json";
@@ -30,7 +30,7 @@ export default async function ComponentPage({ params }: { params: Promise<{ slug
         </TabsPanel>
         <TabsPanel value="usage">
           <Section>
-            <CodeBlock label="Import" code={`import { ${demo.title.split(" ")[0]} } from "@1126labs/ui";`} />
+            <CodeBlock label="Import" code={`import { ${demo.title.split(" ")[0]} } from "@harshitmahajan/ui";`} />
             <div className="mt-3">
               <CodeBlock label="Example" code={demo.usage} />
             </div>

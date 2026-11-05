@@ -1,13 +1,13 @@
 import Link from "next/link";
-import { Card, CardBody, CardDescription, CardHeader, CardTitle, Page, PageHeader, Section } from "@1126labs/ui";
+import { Card, CardBody, CardDescription, CardHeader, CardTitle, Page, PageHeader, Section } from "@harshitmahajan/ui";
 import { CodeBlock } from "@/components/code-block";
 import { blocks } from "@/blocks";
 import { demos } from "@/demos";
 
 const cssSetup = `/* app/globals.css */
 @import "tailwindcss";
-@import "@1126labs/ui/styles.css";
-@source "../node_modules/@1126labs/ui/dist";`;
+@import "@harshitmahajan/ui/styles.css";
+@source "../node_modules/@harshitmahajan/ui/dist";`;
 
 const registrySetup = `// components.json  (add this key)
 {
@@ -55,7 +55,7 @@ export default function OverviewPage() {
       </Section>
 
       <Section title="1. Use the components">
-        <CodeBlock label="Terminal" code="bun add @1126labs/ui" />
+        <CodeBlock label="Terminal" code="bun add @harshitmahajan/ui" />
         <div className="mt-3">
           <CodeBlock label="CSS" code={cssSetup} />
         </div>

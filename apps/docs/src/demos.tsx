@@ -53,7 +53,7 @@ import {
   TabsTab,
   Textarea,
   Tooltip,
-} from "@1126labs/ui";
+} from "@harshitmahajan/ui";
 
 export interface Demo {
   title: string;

@@ -1,4 +1,4 @@
-/* Single entry: consumers import "@1126labs/ui/styles.css" AFTER @import "tailwindcss". */
+/* Single entry: consumers import "@harshitmahajan/ui/styles.css" AFTER @import "tailwindcss". */
 @import "./tokens.css";
 @import "./theme.css";
 @import "./base.css";

@@ -3,7 +3,7 @@
 Audience: Claude Code (executing), Harshit (reviewing).
 Goal: one internal, versioned component library that every ERP-class app installs with `bun add`. Built on **Base UI** (the shadcn Base UI flavour), restyled through a single token file. A backend-leaning dev plus Cursor should produce consistent UI by composing these components and changing only tokens.
 
-Confirmed by Harshit (2026-11-06): English only (no i18n/RTL; en-IN number/date formatting is enough); package name `@1126labs/ui`; repos live on GitHub; apps deploy on Vercel; charts are required; scope is "everything" (all phases below are in scope, none are optional extras).
+Confirmed by Harshit (2026-11-06): English only (no i18n/RTL; en-IN number/date formatting is enough); package name `@harshitmahajan/ui`; repos live on GitHub; apps deploy on Vercel; charts are required; scope is "everything" (all phases below are in scope, none are optional extras).
 
 ---
 
@@ -30,7 +30,7 @@ ui/                              # repo root
   .changeset/                    # versioning
   .github/workflows/             # ci.yml, release.yml
   packages/
-    ui/                          # published as @1126labs/ui
+    ui/                          # published as @harshitmahajan/ui
       src/
         components/              # one folder per component: component.tsx, component.stories.tsx, component.test.tsx
         styles/
@@ -42,10 +42,10 @@ ui/                              # repo root
         lib/cn.ts                # clsx + tailwind-merge extended with our token names
         index.ts                 # barrel export
       rules/                     # cursor + AGENTS rules shipped to consumers
-      bin/init.mjs               # `bunx @1126labs/ui init` copies rules into an app
+      bin/init.mjs               # `bunx @harshitmahajan/ui init` copies rules into an app
       scripts/                   # build helpers, manifest generator
       tsup.config.ts
-    eslint-plugin/               # optional, @1126labs/eslint-plugin-ui (milestone 5)
+    eslint-plugin/               # optional, @harshitmahajan/eslint-plugin-ui (milestone 5)
   apps/
     storybook/                   # docs + visual states (the "design system website")
     playground/                  # a real Next.js app that consumes the BUILT package
@@ -76,7 +76,7 @@ Rules:
 Token groups to define (a working draft exists, see section 14):
 surfaces (canvas, sidebar, surface, surface-raised, sunken, overlay), interaction fills (hover, pressed, selected), lines (border, border-strong), text (fg, fg-muted, fg-subtle), primary (ink), accent (olive) plus ring, status (danger/success/warning/info, each: solid, fg-on-solid, soft, fg-on-soft), radii (xs to full plus semantic control/button/badge/card/popover), shadows (xs to lg), chart palette (`--chart-1` to `--chart-8` categorical, a sequential and a diverging ramp, plus grid/axis/tooltip tokens; every color pair contrast-checked, and never color alone: series also differ by marker or dash), type (sans, display serif, mono, and a 7-step size scale), motion (3 durations plus one easing), layout (sidebar widths, topbar height, page padding, content max widths), density (control heights sm/md/lg, row height, card padding, section gap, field gap).
 
-Typography: Inter for UI, a serif (Newsreader) for page titles. Fonts are an **optional** import (`@1126labs/ui/fonts.css` using fontsource, so there is no network fetch at build). Apps with brand fonts just override `--font-sans` / `--font-display`.
+Typography: Inter for UI, a serif (Newsreader) for page titles. Fonts are an **optional** import (`@harshitmahajan/ui/fonts.css` using fontsource, so there is no network fetch at build). Apps with brand fonts just override `--font-sans` / `--font-display`.
 
 ---
 
@@ -151,8 +151,8 @@ An app's `globals.css` is three lines:
 
 ```css
 @import "tailwindcss";
-@import "@1126labs/ui/styles.css";
-@source "../node_modules/@1126labs/ui/dist";   /* lets Tailwind see the library's class names */
+@import "@harshitmahajan/ui/styles.css";
+@source "../node_modules/@harshitmahajan/ui/dist";   /* lets Tailwind see the library's class names */
 @import "./theme-overrides.css";          /* optional: the app's token overrides */
 ```
 
@@ -168,7 +168,7 @@ Verified in `apps/playground` (Next 16, Turbopack, bun workspace): the `@source`
 **Decision: GitHub Packages (npm registry).** Your repos are on GitHub, it is private, needs no new infrastructure, and access follows GitHub permissions. Alternatives considered: Verdaccio (you would operate it), paid private npm/Cloudsmith (cost), git dependency (weak versioning, needs a committed `dist`).
 
 Hard constraints to verify first (M6):
-- **The npm scope must match the GitHub owner.** `@1126labs/ui` requires the repo to be owned by a GitHub org or user named exactly `1126labs`. If the org has a different name, either rename the scope to match or move the repo. Settle this before anything is published.
+- **The npm scope must match the GitHub owner.** `@harshitmahajan/ui` requires the repo to be owned by a GitHub org or user named exactly `1126labs`. If the org has a different name, either rename the scope to match or move the repo. Settle this before anything is published.
 - `package.json` of the library needs `"repository"` pointing at the repo and `"publishConfig": { "registry": "https://npm.pkg.github.com" }`.
 - GitHub Packages historically only accepts **classic personal access tokens** for installs (`read:packages`), not fine-grained ones. Check current GitHub docs; if still true, create the token under a machine/bot account, not a person's account.
 
@@ -184,7 +184,7 @@ Tokens:
 - **Developers (local):** `NPM_TOKEN` in their shell profile, read-only.
 - **GitHub Actions (library repo):** publishes with the built-in `GITHUB_TOKEN` (`packages: write`).
 - **GitHub Actions (app repos):** `NPM_TOKEN` as a repository or org secret, read-only.
-- **Vercel (every app project):** add `NPM_TOKEN` under Project Settings, Environment Variables, enabled for Production, Preview and Development. Without it, installs fail with a 401 on `@1126labs/ui`. Vercel uses Bun when it finds `bun.lock`; confirm the installed Bun version honors `bunfig.toml` scopes on Vercel, and as a fallback add an `.npmrc` with the same scope.
+- **Vercel (every app project):** add `NPM_TOKEN` under Project Settings, Environment Variables, enabled for Production, Preview and Development. Without it, installs fail with a 401 on `@harshitmahajan/ui`. Vercel uses Bun when it finds `bun.lock`; confirm the installed Bun version honors `bunfig.toml` scopes on Vercel, and as a fallback add an `.npmrc` with the same scope.
 - Use an org-level secret so a new app does not need token setup from scratch.
 
 Vercel hosting for the library's own sites:
@@ -227,8 +227,8 @@ Three enforcement layers, strongest first:
 3. **Instructed:** rules shipped with the package.
 
 Shipped artifacts:
-- `rules/1126-ui.mdc` (Cursor, `alwaysApply: true`) and `rules/AGENTS.md`. Content: the hard rules, "import from `@1126labs/ui` only", how to compose a page (shell, PageHeader, Section, Card), the behavior spec, and a "before you build a new component, check the manifest" step.
-- `bunx @1126labs/ui init` copies those into the app's `.cursor/rules/` and `AGENTS.md`, and prints the three-line CSS setup.
+- `rules/1126-ui.mdc` (Cursor, `alwaysApply: true`) and `rules/AGENTS.md`. Content: the hard rules, "import from `@harshitmahajan/ui` only", how to compose a page (shell, PageHeader, Section, Card), the behavior spec, and a "before you build a new component, check the manifest" step.
+- `bunx @harshitmahajan/ui init` copies those into the app's `.cursor/rules/` and `AGENTS.md`, and prints the three-line CSS setup.
 - A generated **component manifest** (`components.json` or `llms.txt`): every component, its props and variants, one correct usage example and one anti-example. The rules tell the agent to read it first.
 - Version stamp inside the rules, so `init` can detect stale rules after an upgrade.
 
@@ -248,7 +248,7 @@ Shipped artifacts:
 
 - `templates/next-starter`: Next.js, TypeScript, Tailwind v4, the library, the shell, an example list page, rules pre-installed. New apps start from it.
 - Existing apps: install, add the three CSS lines, run `init`, then replace local components gradually.
-- Onboarding doc for the backend dev: "compose pages from `@1126labs/ui`; if something is missing, ask for a component, do not style one."
+- Onboarding doc for the backend dev: "compose pages from `@harshitmahajan/ui`; if something is missing, ask for a component, do not style one."
 
 ---
 
@@ -268,7 +268,7 @@ Shipped artifacts:
 
 **M6 Release pipeline.** Registry setup, tokens in CI, Changesets publish, canary channel. *Accept:* a test version publishes and installs through bun on a clean machine and on the deploy platform.
 
-**M7 Phase 2 components.** **M8 DataTable and charts (Phase 3 and 3b).** **M9 Page patterns and starter template (Phase 4).** Same acceptance bar as M2. Additional M6 acceptance: a throwaway Vercel project with only `NPM_TOKEN` set installs `@1126labs/ui` and deploys the starter template. Additional M8 acceptance: every chart type renders from the same token set, passes contrast checks, and has loading/empty/error states.
+**M7 Phase 2 components.** **M8 DataTable and charts (Phase 3 and 3b).** **M9 Page patterns and starter template (Phase 4).** Same acceptance bar as M2. Additional M6 acceptance: a throwaway Vercel project with only `NPM_TOKEN` set installs `@harshitmahajan/ui` and deploys the starter template. Additional M8 acceptance: every chart type renders from the same token set, passes contrast checks, and has loading/empty/error states.
 
 ---
 
@@ -290,7 +290,7 @@ Known small issues: playground nav links to `/orders`, `/inventory`, `/customers
 ## 16. Decisions to confirm (defaults in brackets)
 
 Settled:
-1. Package name: `@1126labs/ui`.
+1. Package name: `@harshitmahajan/ui`.
 2. Registry: GitHub Packages. Deploy: Vercel (see section 8).
 3. Charts: required (Phase 3b, Recharts).
 4. Scope: everything in phases 1 to 4.
@@ -318,4 +318,12 @@ Built in `apps/docs`: a Next.js site (dogfoods the library) with a page per comp
 
 Verified: docs build (30 static pages), screenshots, auth responses (401 without or with a wrong token, 200 with the right one), and the shadcn CLI resolved `@1126/list-page` from the registry with the header. Not verifiable in the sandbox: the last copy-to-disk step, because the CLI also needs shadcn's own color data from ui.shadcn.com, which the sandbox blocks. Run it once on a normal machine.
 
-Open items: blocks import from `@1126labs/ui`, so the package must be published (or linked) before `add` can install its dependency; add syntax highlighting; add registry items for the tokens CSS if an app wants an eject path; decide how docs-site access is restricted on Vercel (the `/r` routes already have their own token check).
+Open items: blocks import from `@harshitmahajan/ui`, so the package must be published (or linked) before `add` can install its dependency; add syntax highlighting; add registry items for the tokens CSS if an app wants an eject path; decide how docs-site access is restricted on Vercel (the `/r` routes already have their own token check).
+
+---
+
+## 18. Hosting decision (2026-11-06)
+
+The repo lives at `github.com/HarshitMahajan/UI` (private, personal account), not in a `1126labs` org. GitHub Packages requires the package scope to equal the owner, so the package is **`@harshitmahajan/ui`** (earlier sections that say `@1126labs/ui` or require a `1126labs` org are superseded by this). The `@1126` shadcn registry namespace and all "1126 Labs" branding are unchanged.
+
+No Vercel for the docs site for now: Vercel's free plan is for personal non-commercial use and cannot deploy private org repos. Docs run locally. Blocks are to be served from the private repo with a read token (untested, see section 17). CI (`.github/workflows/ci.yml`) runs build, typecheck, style check and the docs/playground builds; `release.yml` publishes to GitHub Packages on a `v*` tag (untested until the first release).

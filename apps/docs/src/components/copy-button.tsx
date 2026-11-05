@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import { Check, Copy } from "lucide-react";
-import { Button } from "@1126labs/ui";
+import { Button } from "@harshitmahajan/ui";
 
 /** Copies text to the clipboard and confirms for 1.5 seconds. */
 export function CopyButton({ text, label = "Copy" }: { text: string; label?: string }) {

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "@fontsource-variable/inter";
 import "@fontsource-variable/newsreader";
 import "./globals.css";
-import { TooltipProvider } from "@1126labs/ui";
+import { TooltipProvider } from "@harshitmahajan/ui";
 
 export const metadata: Metadata = {
   title: "1126 UI",

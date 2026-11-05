@@ -1,5 +1,5 @@
 import { Plus } from "lucide-react";
-import { AppShell, Button } from "@1126labs/ui";
+import { AppShell, Button } from "@harshitmahajan/ui";
 import { AppSidebar } from "@/components/app-sidebar";
 import { DensityToggle } from "@/components/density-toggle";
 

@@ -14,7 +14,7 @@ import {
   Section,
   Select,
   Textarea,
-} from "@1126labs/ui";
+} from "@harshitmahajan/ui";
 
 const terms = [
   { value: "net15", label: "Net 15" },

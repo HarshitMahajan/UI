@@ -13,7 +13,7 @@ import {
   TabsList,
   TabsPanel,
   TabsTab,
-} from "@1126labs/ui";
+} from "@harshitmahajan/ui";
 
 const fields = [
   ["Customer", "Aarav Textiles"],
