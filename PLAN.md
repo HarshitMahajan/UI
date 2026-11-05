@@ -307,3 +307,15 @@ Still open (defaults in brackets, Claude Code should use the default unless told
 13. Seed with the shadcn CLI Base UI style if the current CLI supports it, otherwise port by hand [verify at M2].
 
 Versions checked on npm at planning time (2026-11-06), re-check at M0: recharts 3.10.1, @tanstack/react-table 9.3.1, react-day-picker 10.0.2.
+
+---
+
+## 17. Docs site and block registry (built 2026-11-06)
+
+Decision: **hybrid**. Core components and tokens ship in the npm package; page-level blocks ship through a shadcn-style registry and are copied into apps, where they may be edited under the style rules.
+
+Built in `apps/docs`: a Next.js site (dogfoods the library) with a page per component (Preview, Usage, Source tabs with copy buttons) and per block (Preview, Install, Source); three blocks (list page, detail page, form page); `registry.json` built by `shadcn build` into `public/r/`; registry auth via `src/proxy.ts` (Bearer `REGISTRY_TOKEN`, open when unset).
+
+Verified: docs build (30 static pages), screenshots, auth responses (401 without or with a wrong token, 200 with the right one), and the shadcn CLI resolved `@1126/list-page` from the registry with the header. Not verifiable in the sandbox: the last copy-to-disk step, because the CLI also needs shadcn's own color data from ui.shadcn.com, which the sandbox blocks. Run it once on a normal machine.
+
+Open items: blocks import from `@1126labs/ui`, so the package must be published (or linked) before `add` can install its dependency; add syntax highlighting; add registry items for the tokens CSS if an app wants an eject path; decide how docs-site access is restricted on Vercel (the `/r` routes already have their own token check).

@@ -1,0 +1,31 @@
+{
+  "name": "docs",
+  "private": true,
+  "scripts": {
+    "gen": "node scripts/gen-sources.mjs",
+    "predev": "node scripts/gen-sources.mjs",
+    "dev": "next dev",
+    "registry:build": "shadcn build",
+    "prebuild": "node scripts/gen-sources.mjs && shadcn build",
+    "build": "next build",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@1126labs/ui": "workspace:*",
+    "@fontsource-variable/inter": "^5.2.0",
+    "@fontsource-variable/newsreader": "^5.2.0",
+    "lucide-react": "^1.69.0",
+    "next": "^16.4.5",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.3.4",
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "shadcn": "latest",
+    "tailwindcss": "^4.3.4",
+    "typescript": "^5.9.3"
+  }
+}
