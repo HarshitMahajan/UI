@@ -24,10 +24,12 @@ import { Sidebar1 } from "@/components/kit/sidebar-1";
 - **Installs** read `registry.json` and the component files straight from GitHub, through the shadcn CLI. No server is involved.
 - **The docs site** is only for browsing. It's a static Next.js site and can be hosted anywhere.
 
-## Host the docs on Vercel
-Import this repo in Vercel. It detects Next.js and bun, and no settings or environment variables are needed.
+## Host the docs
+The docs run on Cloudflare Pages at https://ui-3jz.pages.dev. Every push to `main` redeploys them.
 
-The site shows each component's source. Anyone who has its URL can read that code, so turn on Vercel's Deployment Protection if it should stay private. Check that your Vercel plan covers company use and production protection.
+Project settings: production branch `main`, build command `bun run build`, output directory `out`. Keep that build command: the Next.js preset's default skips the step that generates the code samples.
+
+The site shows each component's source, so anyone who has its URL can read that code unless the site is behind Cloudflare Access.
 
 ## Layout
 - `registry/kit/*.tsx`: the components, one file each. They install to `components/kit/`

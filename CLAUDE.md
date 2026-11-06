@@ -13,7 +13,7 @@ Harshit's own UI library, used on top of shadcn/ui in Next.js apps that use bun.
 - Verify before claiming done: typecheck, build, a real install into a shadcn app, and the browser in light and dark.
 
 ## Decisions
-- **Install from GitHub:** `bunx --bun shadcn@latest add HarshitMahajan/UI/<item>`. The repo is private, and access is GitHub read access. `registry.json` at the root is committed. Vercel hosts only the docs.
+- **Install from GitHub:** `bunx --bun shadcn@latest add HarshitMahajan/UI/<item>`. The repo is private, and access is GitHub read access. `registry.json` at the root is committed. Cloudflare Pages hosts only the docs, at https://ui-3jz.pages.dev. Installing never touches that site.
 - **On top of shadcn, never replacing it:** components install to `components/kit/` and import `cn` from `@/lib/utils`, which every shadcn app has. Don't ship a `utils` item: it would prompt to overwrite the app's file.
 - **Tokens:** components use the app's shadcn tokens. The `tokens` item adds only `success`, `danger`, `warning`, `info` and `destructive-foreground`, and adding more components keeps customized values. The optional `theme` item replaces the whole look and overwrites values.
 - **Base UI only, never Radix.** Rewrite pasted Radix or `asChild` code on Base UI (`render` prop, `useRender`, `Collapsible`, ...). The generator fails on Radix imports.
