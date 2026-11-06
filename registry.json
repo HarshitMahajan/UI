@@ -1,0 +1,231 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "ui-kit",
+  "homepage": "https://github.com/HarshitMahajan/UI",
+  "items": [
+    {
+      "name": "tokens",
+      "type": "registry:item",
+      "title": "Tokens",
+      "description": "The few tokens UI Kit components add to a shadcn app. Installed with any component.",
+      "cssVars": {
+        "theme": {
+          "color-success": "var(--success)",
+          "color-danger": "var(--danger)",
+          "color-warning": "var(--warning)",
+          "color-info": "var(--info)",
+          "color-destructive-foreground": "var(--destructive-foreground)"
+        },
+        "light": {
+          "success": "hsl(142 76% 36%)",
+          "danger": "hsl(0 72% 51%)",
+          "warning": "hsl(21 90% 48%)",
+          "info": "hsl(221 83% 53%)",
+          "destructive-foreground": "hsl(0 0% 98%)"
+        },
+        "dark": {
+          "success": "hsl(142 69% 58%)",
+          "danger": "hsl(0 91% 71%)",
+          "warning": "hsl(27 96% 61%)",
+          "info": "hsl(213 94% 68%)",
+          "destructive-foreground": "hsl(0 0% 98%)"
+        }
+      }
+    },
+    {
+      "name": "theme",
+      "type": "registry:theme",
+      "title": "Theme",
+      "description": "Optional: replaces the app's colors and corners with the full UI Kit look.",
+      "cssVars": {
+        "theme": {
+          "radius-md": "calc(var(--radius) - 2px)",
+          "radius-lg": "var(--radius)",
+          "radius-xl": "calc(var(--radius) + 4px)",
+          "color-background": "var(--background)",
+          "color-foreground": "var(--foreground)",
+          "color-card": "var(--card)",
+          "color-sidebar": "var(--sidebar)",
+          "color-primary": "var(--primary)",
+          "color-primary-foreground": "var(--primary-foreground)",
+          "color-secondary": "var(--secondary)",
+          "color-secondary-foreground": "var(--secondary-foreground)",
+          "color-muted": "var(--muted)",
+          "color-muted-foreground": "var(--muted-foreground)",
+          "color-accent": "var(--accent)",
+          "color-accent-foreground": "var(--accent-foreground)",
+          "color-destructive": "var(--destructive)",
+          "color-destructive-foreground": "var(--destructive-foreground)",
+          "color-success": "var(--success)",
+          "color-danger": "var(--danger)",
+          "color-warning": "var(--warning)",
+          "color-info": "var(--info)",
+          "color-border": "var(--border)",
+          "color-input": "var(--input)",
+          "color-ring": "var(--ring)"
+        },
+        "light": {
+          "radius": "0.5rem",
+          "background": "hsl(0 0% 100%)",
+          "foreground": "hsl(0 0% 6%)",
+          "card": "hsl(0 0% 100%)",
+          "sidebar": "hsl(0 0% 98%)",
+          "primary": "hsl(0 0% 9%)",
+          "primary-foreground": "hsl(0 0% 98%)",
+          "secondary": "hsl(0 0% 95%)",
+          "secondary-foreground": "hsl(0 0% 9%)",
+          "muted": "hsl(0 0% 95%)",
+          "muted-foreground": "hsl(0 0% 40%)",
+          "accent": "hsl(0 0% 93%)",
+          "accent-foreground": "hsl(0 0% 9%)",
+          "destructive": "hsl(0 72% 51%)",
+          "destructive-foreground": "hsl(0 0% 98%)",
+          "success": "hsl(142 76% 36%)",
+          "danger": "hsl(0 72% 51%)",
+          "warning": "hsl(21 90% 48%)",
+          "info": "hsl(221 83% 53%)",
+          "border": "hsl(0 0% 89%)",
+          "input": "hsl(0 0% 89%)",
+          "ring": "hsl(0 0% 9%)"
+        },
+        "dark": {
+          "background": "hsl(0 0% 11%)",
+          "foreground": "hsl(0 0% 98%)",
+          "card": "hsl(0 0% 9.5%)",
+          "sidebar": "hsl(0 0% 9%)",
+          "primary": "hsl(0 0% 98%)",
+          "primary-foreground": "hsl(0 0% 9%)",
+          "secondary": "hsl(0 0% 15%)",
+          "secondary-foreground": "hsl(0 0% 98%)",
+          "muted": "hsl(0 0% 15%)",
+          "muted-foreground": "hsl(0 0% 65%)",
+          "accent": "hsl(0 0% 16%)",
+          "accent-foreground": "hsl(0 0% 98%)",
+          "destructive": "hsl(0 63% 42%)",
+          "destructive-foreground": "hsl(0 0% 98%)",
+          "success": "hsl(142 69% 58%)",
+          "danger": "hsl(0 91% 71%)",
+          "warning": "hsl(27 96% 61%)",
+          "info": "hsl(213 94% 68%)",
+          "border": "hsl(0 0% 17%)",
+          "input": "hsl(0 0% 19%)",
+          "ring": "hsl(0 0% 84%)"
+        }
+      }
+    },
+    {
+      "name": "button",
+      "type": "registry:component",
+      "title": "Button",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "HarshitMahajan/UI/tokens"
+      ],
+      "files": [
+        {
+          "path": "registry/kit/button.tsx",
+          "type": "registry:component",
+          "target": "components/kit/button.tsx"
+        }
+      ]
+    },
+    {
+      "name": "sidebar-1",
+      "type": "registry:component",
+      "title": "Sidebar 1",
+      "dependencies": [
+        "@base-ui/react",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "HarshitMahajan/UI/tokens",
+        "HarshitMahajan/UI/button"
+      ],
+      "files": [
+        {
+          "path": "registry/kit/sidebar-1.tsx",
+          "type": "registry:component",
+          "target": "components/kit/sidebar-1.tsx"
+        }
+      ]
+    },
+    {
+      "name": "sidebar-2",
+      "type": "registry:component",
+      "title": "Sidebar 2",
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "registryDependencies": [
+        "HarshitMahajan/UI/tokens"
+      ],
+      "files": [
+        {
+          "path": "registry/kit/sidebar-2.tsx",
+          "type": "registry:component",
+          "target": "components/kit/sidebar-2.tsx"
+        }
+      ]
+    },
+    {
+      "name": "status-badge-1",
+      "type": "registry:component",
+      "title": "Status Badge 1",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "HarshitMahajan/UI/tokens"
+      ],
+      "files": [
+        {
+          "path": "registry/kit/status-badge-1.tsx",
+          "type": "registry:component",
+          "target": "components/kit/status-badge-1.tsx"
+        }
+      ]
+    },
+    {
+      "name": "status-badge-2",
+      "type": "registry:component",
+      "title": "Status Badge 2",
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "HarshitMahajan/UI/tokens"
+      ],
+      "files": [
+        {
+          "path": "registry/kit/status-badge-2.tsx",
+          "type": "registry:component",
+          "target": "components/kit/status-badge-2.tsx"
+        }
+      ]
+    },
+    {
+      "name": "system-status",
+      "type": "registry:component",
+      "title": "System Status",
+      "dependencies": [
+        "@base-ui/react",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "HarshitMahajan/UI/tokens",
+        "HarshitMahajan/UI/button"
+      ],
+      "files": [
+        {
+          "path": "registry/kit/system-status.tsx",
+          "type": "registry:component",
+          "target": "components/kit/system-status.tsx"
+        }
+      ]
+    }
+  ]
+}

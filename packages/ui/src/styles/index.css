@@ -1,5 +1,0 @@
-/* Single entry: consumers import "@harshitmahajan/ui/styles.css" AFTER @import "tailwindcss". */
-@import "./tokens.css";
-@import "./theme.css";
-@import "./base.css";
-@import "./utilities.css";

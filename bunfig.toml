@@ -1,4 +1,0 @@
-# Installing @harshitmahajan/* from GitHub Packages needs a read token in NPM_TOKEN
-# (a classic personal access token with the read:packages scope).
-[install.scopes]
-"@harshitmahajan" = { token = "$NPM_TOKEN", url = "https://npm.pkg.github.com/" }

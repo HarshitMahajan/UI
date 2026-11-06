@@ -10,14 +10,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: oven-sh/setup-bun@v2
-      - run: bun install
-      - name: Build library
-        run: bun run build
+      - run: bun install --frozen-lockfile
       - name: Typecheck
         run: bun run typecheck
-      - name: Style rules (no raw colors, no arbitrary sizes)
-        run: bun run check:styles
-      - name: Build docs and registry
-        run: bun run --filter docs build
-      - name: Build playground
-        run: bun run --filter playground build
+      - name: Build site
+        run: bun run build
+      - name: registry.json is what installs read, so it must match the components
+        run: git diff --exit-code registry.json
+      - name: Registry is valid
+        run: bun x shadcn build -o /tmp/registry

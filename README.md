@@ -1,41 +1,50 @@
-# 1126 Labs UI
+# UI Kit
 
-Internal design system: Base UI components + one token file. Package: `@harshitmahajan/ui` (not yet published).
+Our own component library, on top of shadcn/ui. Browse the site, open a component, and install just that one into a Next.js + shadcn project. The code is copied into the project, and you can edit it there.
+
+Every component is built on [Base UI](https://base-ui.com) and written in strict TypeScript. Radix isn't allowed: `scripts/gen-registry.mjs` fails if a component imports it.
+
+## Use it in an app
+You need read access to this repo, and `gh auth login` done once.
+
+```bash
+bunx --bun shadcn@latest add HarshitMahajan/UI/sidebar-1
+```
+
+```tsx
+import { Sidebar1 } from "@/components/kit/sidebar-1";
+```
+
+- Components go in `components/kit/`, so your `components/ui/` is never touched.
+- They use the shadcn tokens already in your `globals.css`, plus a few they add (`success`, `danger`, `warning`, `info`).
+- List everything with `bunx --bun shadcn@latest list HarshitMahajan/UI`.
+- App builds and deploys need nothing new, because the code is committed in the app.
+
+## How it fits together
+- **Installs** read `registry.json` and the component files straight from GitHub, through the shadcn CLI. No server is involved.
+- **The docs site** is only for browsing. It's a static Next.js site and can be hosted anywhere.
+
+## Host the docs on Vercel
+Import this repo in Vercel. It detects Next.js and bun, and no settings or environment variables are needed.
+
+The site shows each component's source. Anyone who has its URL can read that code, so turn on Vercel's Deployment Protection if it should stay private. Check that your Vercel plan covers company use and production protection.
 
 ## Layout
-- `packages/ui`: the library (`src/styles/*.css` = all design decisions, `src/components/*` = components, `rules/` = Cursor rules for consuming apps)
-- `apps/playground`: a Next.js app that consumes the *built* package (integration test + visual reference)
-- `apps/docs`: the docs site (component pages with preview, usage and source) and the **block registry** (`registry/blocks/*.tsx` built to `public/r/*.json` with `shadcn build`; `/r/*` is token-protected by `src/proxy.ts` when `REGISTRY_TOKEN` is set)
-- `PLAN.md`: full build plan and roadmap
+- `registry/kit/*.tsx`: the components, one file each. They install to `components/kit/`
+- `registry/examples/*.tsx`: the live examples on the site
+- `registry/styles/theme.css`: the site's tokens, and the optional full UI Kit look
+- `registry.json`: generated. Commit it, because installs read it
+- `src/docs.ts`: each component's page content
+- `scripts/gen-registry.mjs`: builds `registry.json` from the above
 
-## Commands (bun)
+## Run it
 ```bash
 bun install
-bun run build         # build the library into packages/ui/dist
-bun run --filter docs build   # builds the docs site and the registry
-bun run dev           # playground at http://localhost:3000 (rebuild the library after editing it)
-bun run typecheck
-bun run check:styles  # fails on hex colors, default palette classes, arbitrary sizes
+bun run dev
 ```
 
-## Using the library in an app
-```css
-/* app/globals.css */
-@import "tailwindcss";
-@import "@harshitmahajan/ui/styles.css";
-@source "../node_modules/@harshitmahajan/ui/dist";   /* path relative to this file */
-```
-Optional fonts (Inter + Newsreader): install `@fontsource-variable/inter` and `@fontsource-variable/newsreader`, then import them in the root layout.
-
-Re-theme by overriding tokens after the import (colors, radii, density), never by editing components.
-
-## Status
-Done: tokens, build, ~25 components, playground. Next: Storybook, tests, charts, DataTable, date picker, publishing (needs the `1126labs` GitHub org). See PLAN.md.
-
-## Two ways things reach an app
-1. **Package** (`bun add @harshitmahajan/ui`): tokens and all core components. Upgrading updates every app.
-2. **Registry** (`npx shadcn@latest add @1126/list-page`): page blocks copied into the app and then editable (still bound by the style rules). Add to the app's `components.json`:
-```json
-"registries": { "@1126": { "url": "https://<docs-domain>/r/{name}.json", "headers": { "Authorization": "Bearer ${REGISTRY_TOKEN}" } } }
-```
-and put `REGISTRY_TOKEN` in `.env.local`.
+## Add a component
+1. Add `registry/kit/<name>.tsx`, built on Base UI and tokens. Import other components as `@/components/kit/<other>`, and export a type for each part's props.
+2. Add at least one example per variation to `registry/examples/`.
+3. Add an entry called `<name>` to `src/docs.ts`, with every section: usage, composition, features, examples, accessibility and API. Its page and gallery tile appear on their own.
+4. Run `bun run typecheck` and `bun run build`, check it in a browser in light and dark, then commit `registry.json` with it.

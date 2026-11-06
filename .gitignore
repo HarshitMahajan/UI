@@ -4,3 +4,6 @@ dist
 *.tsbuildinfo
 .DS_Store
 .env*.local
+out
+next-env.d.ts
+src/generated
